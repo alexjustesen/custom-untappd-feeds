@@ -1,0 +1,9 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+#toplevel_page_custom-untappd-feeds .dashicons-admin-generic:before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f405";
+}

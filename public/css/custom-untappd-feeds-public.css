@@ -1,0 +1,94 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.cuf-shortcode-container,
+.cuf-shortcode-container .pure-g,
+.cuf-shortcode-container .pure-g [class*=pure-u]{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.cuf-shortcode-container p {
+    margin: .5em 0;
+}
+
+.cuf-shortcode-container .text-center {
+    text-align: center;
+}
+
+.cuf-shortcode-container .cuf-user-avatar-container {
+    position: relative;
+    padding: 5px 10px 5px 0px;
+}
+
+.cuf-shortcode-container .cuf-user-avatar {
+    border-radius: 50%;
+}
+
+.cuf-shortcode-container .cuf-user-is-supporter {
+    color: #ffcc00;
+    right: 5px;
+    top: 0;
+    position: absolute;
+}
+
+.cuf-shortcode-container .cuf-user-first-last {
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #000000;
+    display: block;
+}
+
+.cuf-shortcode-container .cuf-user-username,
+.cuf-shortcode-container .cuf-user-location {
+    display: block;
+}
+
+.cuf-shortcode-container hr.solid {
+    height: 1px;
+    border: 0;
+    background-color: #DDDDDD;
+}
+
+.cuf-shortcode-container hr.faded { 
+    border: 0; 
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+.cuf-shortcode-container .cuf-beer-label {
+    margin: 0px 20px 0px 0px;
+    float: left;
+    height: 36px;
+    width: 36px;
+}
+
+.cuf-shortcode-container .cuf-checkin-info date {
+    font-weight: 400;
+}
+
+.cuf-shortcode-container .cuf-user-stats label {
+    text-transform: uppercase;
+}
+
+.cuf-shortcode-container .cuf-user-stats .stat {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.cuf-shortcode-container .cuf-checkin img.cuf-checkin-badge {
+    margin: 5px 10px 0 0;
+    height: 24px;
+    width: 24px;
+}
+
+.cuf-shortcode-container .cuf-badges img.cuf-checkin-badge {
+    margin: 5px 5px 0 5px;
+    height: 36px;
+    width: 36px;
+}
