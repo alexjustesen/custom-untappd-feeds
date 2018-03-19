@@ -72,6 +72,11 @@ class Custom_Untappd_Feeds_API {
         return $url;
     }
     
+    /**
+     * Delete the transient cache record
+     *
+     * @since   1.0.0
+     */
     public function del_cache( $name ) {
         
         // delete the cache
@@ -80,6 +85,11 @@ class Custom_Untappd_Feeds_API {
         return $transient;
     }
     
+    /**
+     * Get the transient cache record
+     *
+     * @since   1.0.0
+     */
     public function get_cache( $name ) {
         
         // get the cache name
@@ -88,6 +98,11 @@ class Custom_Untappd_Feeds_API {
         return $transient;
     }
     
+    /**
+     * Set the transient cache record
+     *
+     * @since   1.0.0
+     */
     public function set_cache( $name, $value, $expiration=60*15 ) {
         
         // set the cache value and expiration
