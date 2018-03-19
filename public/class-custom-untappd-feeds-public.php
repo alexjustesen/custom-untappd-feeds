@@ -39,6 +39,15 @@ class Custom_Untappd_Feeds_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+    
+    /**
+	 * The shortcode object call.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      object    $shortcode    The shortcode object call.
+	 */
+	private $shortcode;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -52,20 +61,36 @@ class Custom_Untappd_Feeds_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
         
-        add_shortcode( 'custom-untappd-feed', array($this, 'cuf_init' ) );
-        add_shortcode( 'custom-untappd-feeds', array($this, 'cuf_init' ) );
-        
 	}
     
-    public function cuf_init( $atts ) {
+    /**
+     * Register the shortcodes for the public-facing side of the site
+     *
+     * @since   1.0.0
+     */
+    public function register_shortcodes() {
         
+        add_shortcode( 'custom-untappd-feed', array($this, 'cuf_shortcode_init' ) );
+        add_shortcode( 'custom-untappd-feeds', array($this, 'cuf_shortcode_init' ) );
+        
+    }
+    
+    /**
+     * Initialize the shortcode html for the public-facing side of the site
+     *
+     * @since   1.0.0
+     */
+    public function cuf_shortcode_init( $atts ) {
+        
+        // Set the shortcode object
         require_once PLUGIN_PATH . 'includes/class-custom-untappd-feeds-shortcodes.php';
+        $this->shortcode = new Custom_Untappd_Feeds_Shortcodes( $atts );
         
-        $shortcodes = new Custom_Untappd_Feeds_Shortcodes( $atts );
+        // Get the shortcode result
+        $result = $this->shortcode->view( $atts );
         
-        $html = $shortcodes->init( $atts );
-                
-        return $html;
+        // Return the result
+        return $result;
     }
 
 	/**

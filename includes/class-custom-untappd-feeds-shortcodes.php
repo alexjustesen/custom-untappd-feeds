@@ -1,20 +1,57 @@
 <?php
 
+/**
+ * Handles the HTML of the shortcode
+ *
+ * @link       https://www.alexjustesen.com
+ * @since      1.0.0
+ *
+ * @package    Custom_Untappd_Feeds
+ * @subpackage Custom_Untappd_Feeds/includes
+ 
+ */
 class Custom_Untappd_Feeds_Shortcodes {
     
-    protected $api;
-    protected $atts = array();
-    protected $html;
-    protected $params = array();
+    /**
+	 * The api call object.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $api    The api call object.
+	 */
+    private $api;
+    
+    /**
+	 * The attributes of the shortcode.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      array    $atts    The attributes of the shortcode.
+	 */
+    public $atts = array();
+    
+    /**
+	 * The HTML returned from the shortcode.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      string    $html    The HTML returned from the shortcode.
+	 */
+    public $html;
+    
     
     public function __construct( $atts ) {
-        require_once PLUGIN_PATH . 'includes/class-custom-untappd-feeds-api.php';
         
-        $this->atts = $atts;
+        // Load the api class
+        require_once PLUGIN_PATH . 'includes/class-custom-untappd-feeds-api.php';
         $this->api = new Custom_Untappd_Feeds_API();
+        
+        // Set shortcode attributes
+        $this->atts = $atts;
+        
     }
     
-    public function init() {
+    public function view() {
         
         if ( isset( $this->atts['view'] ) ) {
             
@@ -46,7 +83,7 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $this->html;
     }
     
-    protected function cuf_header( $user ) {
+    public function cuf_header( $user ) {
         $html .= '<div class="pure-g cuf-user-header">';
             $html .= '<div class="pure-u-1-6 cuf-user-avatar-container">';
                 $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
@@ -64,7 +101,7 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $html;
     }
     
-    protected function user_activity() {
+    public function user_activity() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
         $user = $user['response'];
@@ -109,7 +146,7 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $html;
     }
     
-    protected function user_badges() {
+    public function user_badges() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
         $user = $user['response'];
@@ -133,7 +170,7 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $html;
     }
     
-    protected function user_info() {
+    public function user_info() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
         $user = $user['response'];
@@ -153,4 +190,5 @@ class Custom_Untappd_Feeds_Shortcodes {
             
         return $html;
     }
+    
 }
