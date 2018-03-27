@@ -16,7 +16,7 @@
  * Plugin Name:       Custom Untappd Feeds
  * Plugin URI:        https://www.alexjustesen.com
  * Description:       Unofficial Untappd plugin. Display your recent checkins, user profile and wishlist.
- * Version:           0.1.0-alpha
+ * Version:           0.1.0
  * Author:            Alex Justesen
  * Author URI:        https://www.alexjustesen.com
  * License:           GPL-2.0+
