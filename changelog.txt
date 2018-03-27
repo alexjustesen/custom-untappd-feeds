@@ -1,4 +1,4 @@
 === Change Log ===
 
-= v0.1.0 - March 19th, 2018 =
+= v0.1.0 - March 26th, 2018 =
 * Initial release, this plugin is still under development. Expect things to change, get added and removed from build to build.
