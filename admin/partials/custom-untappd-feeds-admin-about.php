@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/admin/partials
@@ -24,7 +24,7 @@ $tools = new Custom_Untappd_Feeds_Admin_Tools();
     <h2>About</h2>
     <p>This is an unofficial Untappd WordPress plugin and released under the GNU GENERAL PUBLIC LICENSE with NO WARRANTEE.</p>
     
-    <p>With <strong>Custom Untappd Feeds</strong> you can display your <a href="https://www.untappd.com" target="_blank">Untappd</a> user information, user activity feed and badges earned. To use this plugin check out the <a href="admin.php?page=custom-untappd-feeds-documentation" target="_self">documentation</a> for how to configure the sortcodes.</p>
+    <p>With <strong>Custom Untappd Feeds</strong> you can display your <a href="https://www.untappd.com" rel="nofollow" target="_blank">Untappd</a> user information, user activity feed and badges earned. To use this plugin check out the <a href="admin.php?page=custom-untappd-feeds-documentation" target="_self">documentation</a> for how to configure the sortcodes.</p>
     
     <h2>Cache results</h2>
     <p>
@@ -32,9 +32,7 @@ $tools = new Custom_Untappd_Feeds_Admin_Tools();
         hidden for now...
     </p>
     
-    <h2>Change log</h2>
-    <p>That'll come when v1 is "done", I'll use a .md to php plugin because I don't want to write it more than once.</p>
-    
-    
+    <h2>Change log, bugs and feature requests</h2>
+    <p>Visit the Github repo for the latest builds, change logs, request features and report bugs. <a href="https://github.com/alexjustesen/custom-untappd-feeds" rel="nofollow" target="_blank">Github</a></p>
     
 </div>
