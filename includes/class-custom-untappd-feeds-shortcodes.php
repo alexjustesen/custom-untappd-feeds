@@ -83,24 +83,6 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $this->html;
     }
     
-    public function cuf_header( $user ) {
-        $html .= '<div class="pure-g cuf-user-header">';
-            $html .= '<div class="pure-u-1-6 cuf-user-avatar-container">';
-                $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
-                if ( $user['user']['is_supporter'] ) {
-                    $html .= '<span class="cuf-user-is-supporter" title="Untappd Supporter"><i class="fas fa-certificate fa-lg"></i></span>';
-                }
-            $html .= '</div>';
-            $html .= '<div class="pure-u-5-6">';
-                $html .= '<span class="cuf-user-first-last">' . $user['user']['first_name'] . ' ' . $user['user']['last_name'] . '</span>';
-                $html .= '<span class="cuf-user-username"><i class="fas fa-user fa-fw fa-sm"></i> ' . $user['user']['user_name'] . '</span>';
-                $html .= '<span class="cuf-user-location"><i class="fas fa-map-marker fa-fw fa-sm"></i> ' . $user['user']['location'] . '</span>';
-            $html .= '</div>';
-        $html .= '</div>';
-        
-        return $html;
-    }
-    
     public function user_activity() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
@@ -128,7 +110,7 @@ class Custom_Untappd_Feeds_Shortcodes {
                             $html .= $checkin['checkin_comment'] . ' - ';
                         }
                 
-                        $html .= 'Drank a ' . $checkin['beer']['beer_name'] . ' by <a href="' . $checkin['brewery']['contact']['url'] . '" target="_blank">' . $checkin['brewery']['brewery_name'] . '</a>';
+                        $html .= 'Drank a ' . $checkin['beer']['beer_name'] . ' by <a href="' . $checkin['brewery']['contact']['url'] . '" target="_blank">' . $checkin['brewery']['brewery_name'] . '</a>.';
                         $html .= '</p>';
                         
                         foreach( $checkin['badges']['items'] as $badge ) {
@@ -140,7 +122,7 @@ class Custom_Untappd_Feeds_Shortcodes {
             }
             
             $html .= '<hr class="faded">';
-            $html .= '<p class="text-center"><a href="' . $user['user']['untappd_url'] . '" target="_blank" title="Untappd.com"><i class="fab fa-untappd fa-lg"></i></a></p>';
+            $html .= $this->cuf_footer( $user );
         $html .= '</div>';
         
         return $html;
@@ -164,7 +146,7 @@ class Custom_Untappd_Feeds_Shortcodes {
                 $html .= '</div>';
             $html .= '</div>';
             $html .= '<hr class="faded">';
-            $html .= '<p class="text-center"><a href="' . $user['user']['untappd_url'] . '" target="_blank" title="Untappd.com"><i class="fab fa-untappd fa-lg"></i></a></p>';
+            $html .= $this->cuf_footer( $user );
         $html .= '</div>';
             
         return $html;
@@ -179,15 +161,43 @@ class Custom_Untappd_Feeds_Shortcodes {
             $html .= $this->cuf_header( $user );
             $html .= '<hr class="faded">';
             $html .= '<div class="pure-g cuf-user-stats text-center">';
-                $html .= '<div class="pure-u-1-4"><label>Total</label><br/><span class="stat">' . $user['user']['stats']['total_checkins'] . '</span></div>';
-                $html .= '<div class="pure-u-1-4"><label>Unique</label><br/><span class="stat">' . $user['user']['stats']['total_beers'] . '</span></div>';
-                $html .= '<div class="pure-u-1-4"><label>Badges</label><br/><span class="stat">' . $user['user']['stats']['total_badges'] . '</span></div>';
-                $html .= '<div class="pure-u-1-4"><label>Friends</label><br/><span class="stat">' . $user['user']['stats']['total_friends'] . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Total</label><span class="stat">' . $user['user']['stats']['total_checkins'] . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Unique</label><span class="stat">' . $user['user']['stats']['total_beers'] . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Badges</label><span class="stat">' . $user['user']['stats']['total_badges'] . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Friends</label><span class="stat">' . $user['user']['stats']['total_friends'] . '</span></div>';
             $html .= '</div>';
             $html .= '<hr class="faded">';
-            $html .= '<p class="text-center"><a href="' . $user['user']['untappd_url'] . '" target="_blank" title="Untappd.com"><i class="fab fa-untappd fa-lg"></i></a></p>';
+            $html .= $this->cuf_footer( $user );
         $html .= '</div>';
             
+        return $html;
+    }
+    
+    private function cuf_header( $user ) {
+        $html .= '<div class="pure-g cuf-user-header">';
+            $html .= '<div class="pure-u-1-6 cuf-user-avatar-container">';
+                $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
+                if ( $user['user']['is_supporter'] ) {
+                    $html .= '<span class="cuf-user-is-supporter" title="Untappd Supporter"><i class="fas fa-certificate fa-lg"></i></span>';
+                }
+            $html .= '</div>';
+            $html .= '<div class="pure-u-5-6">';
+                $html .= '<span class="cuf-user-first-last">' . $user['user']['first_name'] . ' ' . $user['user']['last_name'] . '</span>';
+                $html .= '<span class="cuf-user-username"><i class="fas fa-user fa-fw fa-sm"></i> ' . $user['user']['user_name'] . '</span>';
+                $html .= '<span class="cuf-user-location"><i class="fas fa-map-marker fa-fw fa-sm"></i> ' . $user['user']['location'] . '</span>';
+            $html .= '</div>';
+        $html .= '</div>';
+        
+        return $html;
+    }
+    
+    protected function cuf_footer( $user ) {
+        $html = '<div class="cuf-footer text-center">';
+        
+            $html .= '<a href="' . $user['user']['untappd_url'] . '" target="_blank" title="Untappd.com"><i class="fab fa-untappd fa-lg"></i></a>';
+        
+        $html .= '</div>';
+        
         return $html;
     }
     
