@@ -88,6 +88,7 @@
 }
 
 .cuf-shortcode-container .cuf-badges img.cuf-checkin-badge {
+    display: inline;
     margin: 5px 5px 0 5px;
     height: 36px;
     width: 36px;
