@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/admin/partials
@@ -25,7 +25,7 @@
         
         <thead>
             <tr>
-                <th>Shortcode</th>
+                <th>View</th>
                 <th>Description</th>
                 <th>Attributes</th>
                 <th>Example</th>
@@ -48,7 +48,7 @@
                     </ul>
                 </td>
                 <td>
-                    <code>[custom-untappd-feeds view='user-activity' user='ajustesen' limit='5']</code>
+                    <code>[custom-untappd-feeds view='user-activity' user='USERNAME' limit='5']</code>
                 </td>
             </tr>
             
