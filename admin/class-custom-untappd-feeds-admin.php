@@ -246,7 +246,7 @@ class Custom_Untappd_Feeds_Admin {
 		 * class.
 		 */
         
-        wp_enqueue_style( 'fontawesome-free', PLUGIN_URL . 'public/fonts/fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.min.css', array(), '5.0.8', 'all' );
+        wp_enqueue_style( 'fontawesome-free', PLUGIN_URL . 'public/fonts/fontawesome-free-5.5.0-web/css/all.min.css', array(), '5.5.0', 'all' );
         wp_enqueue_style( 'purecss', PLUGIN_URL . 'public/css/pure-release-1.0.0/pure-min.css', array(), '1.0.0', 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/custom-untappd-feeds-admin.css', array(), $this->version, 'all' );
 
@@ -271,7 +271,6 @@ class Custom_Untappd_Feeds_Admin {
 		 * class.
 		 */
         
-        wp_enqueue_script( 'fontawesome-free', PLUGIN_URL . 'public/fonts/fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.min.js', array( 'jquery' ), '5.0.8', false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/custom-untappd-feeds-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
