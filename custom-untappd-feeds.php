@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://www.alexjustesen.com
- * @since             1.0.0
+ * @since             2018.11
  * @package           Custom_Untappd_Feeds
  *
  * @wordpress-plugin
  * Plugin Name:       Custom Untappd Feeds
  * Plugin URI:        https://www.alexjustesen.com
  * Description:       Unofficial Untappd plugin. Display your recent checkins, user profile and wishlist.
- * Version:           0.1.0
+ * Version:           2018.11
  * Author:            Alex Justesen
  * Author URI:        https://www.alexjustesen.com
  * License:           GPL-2.0+
@@ -30,12 +30,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+/** Define plugin constants
+ * Versioning by Calendar standard (https://calver.org/) year.month.patch
  */
-define( 'PLUGIN_NAME_VERSION', '0.1.0' );
+define( 'PLUGIN_NAME_VERSION', '2018.11' );
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
