@@ -28,11 +28,23 @@ class Custom_Untappd_Feeds_API {
      * @var     string
      */
     protected $client_secret;
+    
+    /**
+     * Transient prefix used to store cached data
+     *
+     * @since   2018.12
+     * @access  protected
+     * @var     string
+     */
+    protected $transient_prefix;
         
     public function __construct() {
         
         // Set API endpoint, current public api is version 4 - https required
         $this->api_endpoint = 'https://api.untappd.com/v4';
+        
+        // Set transient namespace
+        $this->$transient_prefix = 'cuf_response_';
         
         // Get Custom Untappd Feed API option data
         $option = get_option( 'cuf_api_settings' );
@@ -53,23 +65,50 @@ class Custom_Untappd_Feeds_API {
         
     }
     
-    /**
+    /** api_url()
      * Build the api url string
      *
      * @since   2018.11
-     * @access  public
+     * @access  private
+     *
+     * @param   $api_method string
+     * @param   $api_params array
+     *
+     * @return  $url        string
+     * @author  alexjustesen
      */
-    public function build_url( $api_method, $api_params ) {
+    private function api_url( $api_method, $api_params ) {
         
-        $url = $this->api_endpoint . $api_method . '?client_id=' . $this->client_id . '&client_secret=' . $this->client_secret;
+        // Merge query args into single array
+        $args = array_merge( array( 'client_id' => $this->client_id, 'client_secret' => $this->client_secret ), $api_params );
         
-        if ( !empty( is_array( $api_params ) ) ) {
-            foreach( $api_params as $key => $value ){
-                $url .= '&' . $key . '=' . $value;
-            }
-        }
+        // Create api url with endpoint and method
+        $url = $this->api_endpoint . $api_method;
         
+        // Add api args to the api url
+        $url = add_query_arg( $args, $url );
+        
+        // Return url
         return $url;
+    }
+    
+    /** hash_name()
+     *
+     * @since   2018.11
+     * @access  private
+     * 
+     * @param   $url    string
+     *
+     * @return  $hash   string
+     * @author  alexjustesen
+     */
+    private function transient_name( $url ) {
+        
+        // Build a unique transient name
+        $hash = $this->$transient_prefix . md5( $url );
+                
+        // Return name
+        return $hash;
     }
     
     /**
@@ -77,11 +116,32 @@ class Custom_Untappd_Feeds_API {
      *
      * @since   2018.11
      */
-    public function del_cache( $name ) {
+    public function del_cache( $url ) {
+        
+        // Get transient name from url string
+        $name = $this->transient_name( $url );
         
         // delete the cache
         $transient = delete_transient( $name ); // https://codex.wordpress.org/Function_Reference/delete_transient
         
+        // Return transient
+        return $transient;
+    }
+    
+    /**
+     * Set the transient cache record, Untappd requires the cache be cleared at least every 24h
+     *
+     * @since   2018.11
+     */
+    public function set_cache( $url, $value, $expiration=60*15 ) {
+        
+        // Get transient name from url string
+        $name = $this->transient_name( $url );
+        
+        // set the cache value and expiration
+        $transient = set_transient( $name, $value, $expiration ); // https://codex.wordpress.org/Function_Reference/set_transient
+        
+        // Return transient
         return $transient;
     }
     
@@ -90,24 +150,15 @@ class Custom_Untappd_Feeds_API {
      *
      * @since   2018.11
      */
-    public function get_cache( $name ) {
+    public function get_cache( $url ) {
+        
+        // Get transient name from url string
+        $name = $this->transient_name( $url );
         
         // get the cache name
         $transient = get_transient( $name ); // https://codex.wordpress.org/Function_Reference/get_transient
         
-        return $transient;
-    }
-    
-    /**
-     * Set the transient cache record
-     *
-     * @since   2018.11
-     */
-    public function set_cache( $name, $value, $expiration=60*15 ) {
-        
-        // set the cache value and expiration
-        $transient = set_transient( $name, $value, $expiration ); // https://codex.wordpress.org/Function_Reference/set_transient
-        
+        // Return transient
         return $transient;
     }
     
@@ -119,20 +170,27 @@ class Custom_Untappd_Feeds_API {
      */
     public function get( $api_method, $api_params ) {
         
-        // Build API url string
-        $url = $this->build_url( $api_method, $api_params );
-        
-        $response = $this->get_cache( $url );
+        // Get api url string
+        $url = $this->api_url( $api_method, $api_params );
                 
+        // Search cache for a stored call
+        $response = $this->get_cache( $url );
+        
+        // If cache is empty make a remote get call
         if ( $response === false ) {
             
             // Set API reponse to json var
-            $response = wp_remote_get( $url );
+            $response = wp_remote_request( $url );
             
+            # TODO check response code, only cache successful calls
+                        
             // Set cache of the API response
             $cache = $this->set_cache( $url, $response );
+            
+            # TODO capture any set cache errors
         }
         
+        // Return response
         return $response;
     }
     
@@ -151,7 +209,7 @@ class Custom_Untappd_Feeds_API {
      */
     public function get_code( $api_method, $api_params ) {
         
-        $url = $this->build_url( $api_method, $api_params );
+        $url = $this->api_url( $api_method, $api_params );
         $http_code = wp_remote_retrieve_response_code(  wp_remote_get( $url ) );
         
         return $http_code;
