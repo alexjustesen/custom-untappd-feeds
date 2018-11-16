@@ -14,6 +14,12 @@ Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd da
 
 ### Change Log
 
+#### v2018.12 - in development
+* New transient caching based on md5 of url
+* Rewrite to transient handling for cached API calls
+* Bumped min WP version to v4.4 to support longer transient names
+* Updated version references
+
 #### v2018.11 - November 15th, 2018
 * Switched to calendar versioning
 * Upgraded Font Awesome to v5.5.0
