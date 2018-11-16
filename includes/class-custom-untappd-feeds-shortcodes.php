@@ -167,10 +167,10 @@ class Custom_Untappd_Feeds_Shortcodes {
             $html .= $this->cuf_header( $user );
             $html .= '<hr class="faded">';
             $html .= '<div class="pure-g cuf-user-stats text-center">';
-                $html .= '<div class="pure-u-1-4"><label>Total</label><span class="stat">' . $user['user']['stats']['total_checkins'] . '</span></div>';
-                $html .= '<div class="pure-u-1-4"><label>Unique</label><span class="stat">' . $user['user']['stats']['total_beers'] . '</span></div>';
-                $html .= '<div class="pure-u-1-4"><label>Badges</label><span class="stat">' . $user['user']['stats']['total_badges'] . '</span></div>';
-                $html .= '<div class="pure-u-1-4"><label>Friends</label><span class="stat">' . $user['user']['stats']['total_friends'] . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Total</label><span class="stat">' . number_format( $user['user']['stats']['total_checkins'], 0, '', ',' ) . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Unique</label><span class="stat">' . number_format( $user['user']['stats']['total_beers'], 0, '', ',' ) . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Badges</label><span class="stat">' . number_format( $user['user']['stats']['total_badges'], 0, '', ',' ) . '</span></div>';
+                $html .= '<div class="pure-u-1-4"><label>Friends</label><span class="stat">' . number_format( $user['user']['stats']['total_friends'], 0, '', ',' ) . '</span></div>';
             $html .= '</div>';
             $html .= '<hr class="faded">';
             $html .= $this->cuf_footer( $user );
@@ -181,14 +181,14 @@ class Custom_Untappd_Feeds_Shortcodes {
     
     private function cuf_header( $user ) {
         $html .= '<div class="pure-g cuf-user-header">';
-            $html .= '<div class="pure-u-1-6 cuf-user-avatar-container">';
+            $html .= '<div class="pure-u-5-24 cuf-user-avatar-container">';
                 $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
                 if ( $user['user']['is_supporter'] ) {
                     $html .= '<span class="cuf-user-is-supporter" title="Untappd Supporter"><i class="fas fa-certificate fa-lg"></i></span>';
                 }
             $html .= '</div>';
-            $html .= '<div class="pure-u-5-6">';
-                $html .= '<span class="cuf-user-first-last">' . $user['user']['first_name'] . ' ' . $user['user']['last_name'] . '</span>';
+            $html .= '<div class="pure-u-19-24 cuf-user-info-container">';
+                $html .= '<span class="cuf-user-name">' . $user['user']['first_name'] . ' ' . $user['user']['last_name'] . '</span>';
                 $html .= '<span class="cuf-user-username"><i class="fas fa-user fa-fw fa-sm"></i> ' . $user['user']['user_name'] . '</span>';
                 $html .= '<span class="cuf-user-location"><i class="fas fa-map-marker fa-fw fa-sm"></i> ' . $user['user']['location'] . '</span>';
             $html .= '</div>';

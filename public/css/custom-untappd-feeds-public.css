@@ -20,30 +20,40 @@
 
 .cuf-shortcode-container .cuf-user-avatar-container {
     position: relative;
-    padding: 5px 10px 5px 0px;
+    padding: 5px 5px 5px 0px;
 }
 
-.cuf-shortcode-container .cuf-user-avatar {
+.cuf-shortcode-container .cuf-user-avatar-container .cuf-user-avatar {
+    border: 1px solid #9aa0ac;
     border-radius: 50%;
 }
 
-.cuf-shortcode-container .cuf-user-is-supporter {
+.cuf-shortcode-container .cuf-user-avatar-container .cuf-user-is-supporter {
     color: #ffcc00;
     right: 5px;
     top: 0;
     position: absolute;
 }
 
-.cuf-shortcode-container .cuf-user-first-last {
-    font-weight: 400;
-    font-size: 1.5em;
-    color: #000000;
-    display: block;
+.cuf-shortcode-container .cuf-user-info-container {
+    padding: 5px 0px 0px 10px;
 }
 
-.cuf-shortcode-container .cuf-user-username,
-.cuf-shortcode-container .cuf-user-location {
+.cuf-shortcode-container .cuf-user-info-container .cuf-user-name {
+    color: #000000;
     display: block;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.cuf-shortcode-container .cuf-user-info-container .cuf-user-username,
+.cuf-shortcode-container .cuf-user-info-container .cuf-user-location {
+    color: #9aa0ac;
+    display: inline;
+}
+
+.cuf-shortcode-container .cuf-user-info-container .cuf-user-location {
+    margin-left: 1em;
 }
 
 .cuf-shortcode-container hr.solid {
@@ -54,7 +64,7 @@
 
 .cuf-shortcode-container hr.faded { 
     border: 0; 
-    margin: 1.5em 0px;
+    margin: 1.25em 0px;
     height: 1px; 
     background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
     background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -69,18 +79,16 @@
     width: 36px;
 }
 
-.cuf-shortcode-container .cuf-checkin-info date {
-    font-weight: 400;
-}
-
 .cuf-shortcode-container .cuf-user-stats label {
+    color: #9aa0ac;
+    margin-bottom: 0px !important;
     font-weight: 300;
     text-transform: uppercase;
 }
 
 .cuf-shortcode-container .cuf-user-stats .stat {
-    font-size: 1.5em;
-    font-weight: 500;
+    font-size: 1.25em;
+    font-weight: 700;
 }
 
 .cuf-shortcode-container .cuf-checkin img.cuf-checkin-badge {
