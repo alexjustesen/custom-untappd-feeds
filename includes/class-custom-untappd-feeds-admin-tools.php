@@ -59,12 +59,10 @@ class Custom_Untappd_Feeds_Admin_Tools {
         global $wpdb;
         $sql = "SELECT `option_name` as `name`, `option_value` as `value` 
             FROM $wpdb->options 
-            WHERE `option_name` LIKE '%api.untappd.com%'";
+            WHERE `option_name` LIKE '%_cuf_response_%'";
         
         $results = $wpdb->get_results( $sql );
-        
-        $transients = array();
-        
+                
         $this->html = $results;
         
         return $this->html;
