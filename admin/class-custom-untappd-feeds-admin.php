@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/admin
@@ -25,7 +25,7 @@ class Custom_Untappd_Feeds_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Custom_Untappd_Feeds_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,7 +43,7 @@ class Custom_Untappd_Feeds_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -200,7 +200,7 @@ class Custom_Untappd_Feeds_Admin {
     /**
      * Add a settings link to the plugin details in the plugins list.
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function cuf_plugin_documentation_link( $links, $file ) {
         
@@ -215,7 +215,7 @@ class Custom_Untappd_Feeds_Admin {
     /**
      * Add a settings link to the plugin details in the plugins list.
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function cuf_plugin_settings_link( $links, $file ) {
         
@@ -230,7 +230,7 @@ class Custom_Untappd_Feeds_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 */
 	public function enqueue_styles() {
 
@@ -255,7 +255,7 @@ class Custom_Untappd_Feeds_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 */
 	public function enqueue_scripts() {
 

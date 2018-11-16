@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/public
@@ -25,7 +25,7 @@ class Custom_Untappd_Feeds_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Custom_Untappd_Feeds_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,7 +43,7 @@ class Custom_Untappd_Feeds_Public {
     /**
 	 * The shortcode object call.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   private
 	 * @var      object    $shortcode    The shortcode object call.
 	 */
@@ -52,7 +52,7 @@ class Custom_Untappd_Feeds_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -66,7 +66,7 @@ class Custom_Untappd_Feeds_Public {
     /**
      * Register the shortcodes for the public-facing side of the site
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function register_shortcodes() {
         
@@ -78,7 +78,7 @@ class Custom_Untappd_Feeds_Public {
     /**
      * Initialize the shortcode html for the public-facing side of the site
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function cuf_shortcode_init( $atts ) {
         
@@ -96,7 +96,7 @@ class Custom_Untappd_Feeds_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 */
 	public function enqueue_styles() {
 
@@ -122,7 +122,7 @@ class Custom_Untappd_Feeds_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 */
 	public function enqueue_scripts() {
 

@@ -6,7 +6,7 @@
  * This file is used to markup the public-facing aspects of the plugin.
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/public/partials

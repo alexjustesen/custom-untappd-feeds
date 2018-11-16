@@ -4,7 +4,7 @@
  * Handles the HTML of the shortcode
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/includes
@@ -15,7 +15,7 @@ class Custom_Untappd_Feeds_Shortcodes {
     /**
 	 * The api call object.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   private
 	 * @var      string    $api    The api call object.
 	 */
@@ -24,7 +24,7 @@ class Custom_Untappd_Feeds_Shortcodes {
     /**
 	 * The attributes of the shortcode.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   public
 	 * @var      array    $atts    The attributes of the shortcode.
 	 */
@@ -33,7 +33,7 @@ class Custom_Untappd_Feeds_Shortcodes {
     /**
 	 * The HTML returned from the shortcode.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 * @access   public
 	 * @var      string    $html    The HTML returned from the shortcode.
 	 */

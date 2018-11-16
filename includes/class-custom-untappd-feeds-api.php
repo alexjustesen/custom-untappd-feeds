@@ -5,7 +5,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * The URL endpoint of the Untappd API
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  protected
      * @var     string
      */
@@ -14,7 +14,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * The Client ID of the Untappd API App
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  protected
      * @var     string
      */
@@ -23,7 +23,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * The Client Secret of the Untappd API App
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  protected
      * @var     string
      */
@@ -56,7 +56,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Build the api url string
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  public
      */
     public function build_url( $api_method, $api_params ) {
@@ -75,7 +75,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Delete the transient cache record
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function del_cache( $name ) {
         
@@ -88,7 +88,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Get the transient cache record
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function get_cache( $name ) {
         
@@ -101,7 +101,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Set the transient cache record
      *
-     * @since   1.0.0
+     * @since   2018.11
      */
     public function set_cache( $name, $value, $expiration=60*15 ) {
         
@@ -114,7 +114,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Returns the http response from the api get call
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  public
      */
     public function get( $api_method, $api_params ) {
@@ -146,7 +146,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Returns the http response code only from the api get call
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  public
      */
     public function get_code( $api_method, $api_params ) {
@@ -160,7 +160,7 @@ class Custom_Untappd_Feeds_API {
     /**
      * Returns the http response headers only from the api get call
      *
-     * @since   1.0.0
+     * @since   2018.11
      * @access  public
      */
     public function get_headers( $api_method, $api_params ) {

@@ -4,7 +4,7 @@
  * Fired during plugin activation
  *
  * @link       https://www.alexjustesen.com
- * @since      1.0.0
+ * @since      2018.11
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.0
+ * @since      2018.11
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/includes
  * @author     Alex Justesen <alex@alexjustesen.com>
@@ -27,7 +27,7 @@ class Custom_Untappd_Feeds_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    2018.11
 	 */
 	public static function activate() {
 
