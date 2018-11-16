@@ -39,7 +39,13 @@ class Custom_Untappd_Feeds_Shortcodes {
 	 */
     public $html;
     
-    
+    /** __construct()
+     * Entry point for shortcode view
+     *
+	 * @since    2018.11
+	 * @access   public
+	 * @var      string    $atts
+	 */
     public function __construct( $atts ) {
         
         // Load the api class
