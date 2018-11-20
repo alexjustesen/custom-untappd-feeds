@@ -1,8 +1,5 @@
 # Custom Untappd Feeds
-Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd data on your WordPress site.
-
-### Contributors
-@alexjustesen - [Donate for :beers: or :coffee:](https://ko-fi.com/alexjustesen)
+Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd data on your WordPress site. [Donate :beers: or :coffee:](https://ko-fi.com/alexjustesen) to support the plugin.
 
 ### Installation
 
