@@ -105,10 +105,7 @@ class Custom_Untappd_Feeds_Shortcodes {
                     $html .= '<div class="pure-u-1-6"><img class="cuf-beer-label" src="' . $checkin['beer']['beer_label'] . '"></div>';
                     $html .= '<div class="pure-u-5-6">';
                         $html .= '<div class="pure-g cuf-checkin-info">';
-                            $html .= '<div class="pure-u-10-24"><i class="fas fa-calendar fa-fw fa-sm"></i> <date>' . date('M j, Y', strtotime( $checkin['created_at'] ) ) . '</date></div>';
-                            $html .= '<div class="pure-u-6-24 text-center"><i class="fas fa-star fa-fw fa-sm"></i> ' . $checkin['rating_score'] . '</div>';
-                            $html .= '<div class="pure-u-4-24 text-center"><i class="fas fa-comment fa-fw fa-sm"></i> ' . $checkin['comments']['count'] . '</div>';
-                            $html .= '<div class="pure-u-4-24 text-center"><i class="fas fa-thumbs-up fa-fw fa-sm"></i> ' . $checkin['toasts']['count'] . '</div>';
+                            $html .= '<div class="pure-u-1-1"><i class="fas fa-calendar fa-fw fa-sm"></i> <date>' . date('F j, Y', strtotime( $checkin['created_at'] ) ) . '</date></div>';
                         $html .= '</div>';
                         
                         $html .= '<p>';
@@ -119,9 +116,22 @@ class Custom_Untappd_Feeds_Shortcodes {
                         $html .= 'Drank a ' . $checkin['beer']['beer_name'] . ' by <a href="' . $checkin['brewery']['contact']['url'] . '" target="_blank">' . $checkin['brewery']['brewery_name'] . '</a>.';
                         $html .= '</p>';
                         
-                        foreach( $checkin['badges']['items'] as $badge ) {
-                            $html .= '<img class="cuf-checkin-badge" src="' . $badge['badge_image']['sm'] . '" title="' . $badge['badge_name'] . '">';
+                        if ( $checkin['badges']['count'] > 0 ) {
+                            
+                            $html .= '<div class="cuf-checkin-badges">';
+                            
+                            foreach( $checkin['badges']['items'] as $badge ) {
+                                $html .= '<img class="cuf-checkin-badge" src="' . $badge['badge_image']['sm'] . '" title="' . $badge['badge_name'] . '">';
+                            }
+                            
+                            $html .= '</div>';
                         }
+                        
+                        $html .= '<div class="pure-g cuf-checkin-info">';
+                            $html .= '<div class="pure-u-1-3 text-center"><i class="fas fa-star fa-fw fa-sm"></i> ' . $checkin['rating_score'] . '</div>';
+                            $html .= '<div class="pure-u-1-3 text-center"><i class="fas fa-comment fa-fw fa-sm"></i> ' . $checkin['comments']['count'] . '</div>';
+                            $html .= '<div class="pure-u-1-3 text-center"><i class="fas fa-thumbs-up fa-fw fa-sm"></i> ' . $checkin['toasts']['count'] . '</div>';
+                        $html .= '</div>';
                         
                     $html .= '</div>';
                 $html .= '</div>';

@@ -36,7 +36,7 @@
 }
 
 .cuf-shortcode-container .cuf-user-info-container {
-    padding: 5px 0px 0px 10px;
+    padding: 10px 0px 0px 10px;
 }
 
 .cuf-shortcode-container .cuf-user-info-container .cuf-user-name {
@@ -44,12 +44,14 @@
     display: block;
     font-weight: 400;
     font-size: 1.5em;
+    line-height: 1em;
 }
 
 .cuf-shortcode-container .cuf-user-info-container .cuf-user-username,
 .cuf-shortcode-container .cuf-user-info-container .cuf-user-location {
     color: #9aa0ac;
     display: inline;
+    font-size: .75em;
 }
 
 .cuf-shortcode-container .cuf-user-info-container .cuf-user-location {
@@ -81,8 +83,9 @@
 
 .cuf-shortcode-container .cuf-user-stats label {
     color: #9aa0ac;
-    margin-bottom: 0px !important;
     font-weight: 300;
+    font-size: .75em;
+    margin-bottom: 0px !important;
     text-transform: uppercase;
 }
 
@@ -91,8 +94,15 @@
     font-weight: 700;
 }
 
-.cuf-shortcode-container .cuf-checkin img.cuf-checkin-badge {
-    margin: 5px 10px 0 0;
+.cuf-shortcode-container .cuf-checkin .cuf-checkin-badges {
+    display: block;
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.cuf-shortcode-container .cuf-checkin .cuf-checkin-badges img.cuf-checkin-badge {
+    display: inline;
+    margin: 0 10px 0 0;
     height: 24px;
     width: 24px;
 }
