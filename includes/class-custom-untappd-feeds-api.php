@@ -135,6 +135,19 @@ class Custom_Untappd_Feeds_API {
      */
     public function set_cache( $url, $value, $expiration=60*15 ) {
         
+        // Get api cache timeout
+        $api_settings = get_option( 'cuf_api_settings');
+        
+        if ( isset( $api_settings['cuf_cache_timeout'] ) ) {
+            // Check if the value is numeric
+            if ( is_numeric( $api_settings['cuf_cache_timeout'] ) ) {
+                $expiration = $api_settings['cuf_cache_timeout'];
+            }
+            else {
+                throw new Exception( 'CUF Cache Timeout is not a valid numeric value.' );
+            }
+        }
+        
         // Get transient name from url string
         $name = $this->transient_name( $url );
         

@@ -144,11 +144,11 @@ class Custom_Untappd_Feeds_Admin {
             'option' => 'cuf_api_settings', // matches the options name
             'class' => 'cuf-api-settings', // class for the wrapper and input field
             'description' => '<i class="fas fa-exclamation-circle fa-fw"></i> Required field.', // describe the field
-            'size' => '60'
+            'size' => '60',
         ) );
         
         /**
-         * Field: Client ID
+         * Field: Client Secret
          */
         $this->create_settings_field( array(
             'name' => 'cuf_client_secret',
@@ -159,7 +159,27 @@ class Custom_Untappd_Feeds_Admin {
             'option' => 'cuf_api_settings', // matches the options name
             'class' => 'cuf-api-settings', // class for the wrapper and input field
             'description' => '<i class="fas fa-exclamation-circle fa-fw"></i> Required field.', // describe the field
-            'size' => '60'
+            'size' => '60',
+        ) );
+        
+        /**
+         * Field: API Cache Timeout
+         */
+        $this->create_settings_field( array(
+            'name' => 'cuf_cache_timeout',
+            'title' => '<label for="cuf_client_secret">API Cache Timeout</label>', // label for the input field
+            'callback'  => 'default_field_text', // name of the function that outputs the html
+            'page' => 'cuf_api_settings', // matches the section name
+            'section' => 'cuf_api_settings', // matches the section name
+            'option' => 'cuf_api_settings', // matches the options name
+            'class' => 'cuf-api-settings', // class for the wrapper and input field
+            'description' => 'The amount of time in seconds an API call is cached for. Default is 900 seconds or 15 minutes.', // describe the field
+            'size' => '10',
+            'type' => 'number',
+            'default' => '900',
+            'step' => '1',
+            'min' => '0',
+            'max' => '86400',
         ) );
         
     }
@@ -177,11 +197,11 @@ class Custom_Untappd_Feeds_Admin {
         ?>
         <input name="<?php echo $args['option'].'['.$args['name'].']'; ?>" id="cuf_<?php echo $args['name']; ?>" class="<?php echo $args['class']; ?>"<?php echo $type; ?><?php echo $size; ?><?php echo $min; ?><?php echo $max; ?><?php echo $step; ?> value="<?php echo $option_string; ?>" />
         <?php if ( isset( $args['example'] ) ) : ?>
-        <span><?php echo $args['example']; ?></span>
-    <?php endif; ?>
-        <?php if ( isset( $args['description'] ) ) : ?>
-        <p class="cuf-tooltip cuf-more-info"><?php _e( $args['description'], 'custom-untappd-feeds' ); ?></p>
-    <?php endif; ?>
+            <span><?php echo $args['example']; ?></span>
+        <?php endif; ?>
+            <?php if ( isset( $args['description'] ) ) : ?>
+            <p class="cuf-tooltip cuf-more-info"><?php _e( $args['description'], 'custom-untappd-feeds' ); ?></p>
+        <?php endif; ?>
         <?php
     }
     
@@ -206,7 +226,7 @@ class Custom_Untappd_Feeds_Admin {
         
         if ( $file == 'custom-untappd-feeds/custom-untappd-feeds.php' ) {
             /* Insert the link at the end*/
-        $links['documentation'] = sprintf( '<a href="%s"> %s </a>', admin_url( 'admin.php?page=custom-untappd-feeds-documentation' ), __( 'Documentation', 'custom-untappd-feeds' ) );
+            $links['documentation'] = sprintf( '<a href="%s"> %s </a>', admin_url( 'admin.php?page=custom-untappd-feeds-documentation' ), __( 'Documentation', 'custom-untappd-feeds' ) );
         }
         return $links;
         
@@ -221,7 +241,7 @@ class Custom_Untappd_Feeds_Admin {
         
         if ( $file == 'custom-untappd-feeds/custom-untappd-feeds.php' ) {
             /* Insert the link at the end*/
-        $links['settings'] = sprintf( '<a href="%s"> %s </a>', admin_url( 'admin.php?page=custom-untappd-feeds' ), __( 'Settings', 'custom-untappd-feeds' ) );
+            $links['settings'] = sprintf( '<a href="%s"> %s </a>', admin_url( 'admin.php?page=custom-untappd-feeds' ), __( 'Settings', 'custom-untappd-feeds' ) );
         }
         return $links;
         
