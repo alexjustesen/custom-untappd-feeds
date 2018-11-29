@@ -8,8 +8,8 @@
  *
  * @package    Custom_Untappd_Feeds
  * @subpackage Custom_Untappd_Feeds/includes
- 
  */
+
 class Custom_Untappd_Feeds_Shortcodes {
     
     /**
@@ -263,7 +263,7 @@ class Custom_Untappd_Feeds_Shortcodes {
     /** user_overview()
      * Shortcode view to show the users basic profile stats, recent activity and recently earned badges.
      *
-     * @since   2018.11
+     * @since   2018.12
      * @access  public
      */
     public function user_overview() {
