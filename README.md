@@ -12,6 +12,7 @@ Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd da
 ### Change Log
 
 #### v2018.12 - in development
+* New User Overview shortcode to show the users basic info, badges and recent activity
 * Can now set custom api cache timeout
 * New transient caching based on md5 of url
 * Rewrite to transient handling for cached API calls

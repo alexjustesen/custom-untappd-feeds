@@ -87,6 +87,25 @@
                 </td>
             </tr>
             
+            <tr>
+                <td>
+                    <code>user-overview</code>
+                </td>
+                <td>
+                    <p>Combines the user info, badges and activity into one shortcode.</p>
+                </td>
+                <td>
+                    <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-check-square"></i></span><strong><code>user='USERNAME'</code> - the username to get the user information for.</strong></li>
+                        <li><span class="fa-li"><i class="far fa-square"></i></span><code>activity-limit='#'</code> - returns the number of check-ins set. Default = 5 Max = 50</li>
+                        <li><span class="fa-li"><i class="far fa-square"></i></span><code>badge-limit='#'</code> - returns the number of badges set, Default = 12 Max = 50</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>[custom-untappd-feeds view='user-overview' user='USERNAME' activity-limit='5' badge-limit='12']</code>
+                </td>
+            </tr>
+            
         </tbody>
         
     </table>
