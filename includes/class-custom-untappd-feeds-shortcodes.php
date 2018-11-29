@@ -44,7 +44,7 @@ class Custom_Untappd_Feeds_Shortcodes {
      *
 	 * @since    2018.11
 	 * @access   public
-	 * @var      string    $atts
+	 * @var      array     $atts
 	 */
     public function __construct( $atts ) {
         
@@ -57,6 +57,13 @@ class Custom_Untappd_Feeds_Shortcodes {
         
     }
     
+    /** view()
+     * Processes which shortcode to render
+     *
+     * @since   2018.11
+     * @access  public
+     * @var     array       $atts
+     */
     public function view() {
         
         if ( isset( $this->atts['view'] ) ) {
@@ -89,6 +96,12 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $this->html;
     }
     
+    /** user_activity()
+     * Shortcode view to show the users recent checkins.
+     *
+     * @since   2018.11
+     * @access  public
+     */
     public function user_activity() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
@@ -97,7 +110,7 @@ class Custom_Untappd_Feeds_Shortcodes {
         $checkins = $checkins['response'];
         
         $html .= '<div class="cuf-shortcode-container">';
-            $html .= $this->cuf_header( $user );
+            $html .= $this->shortcode_header( $user );
 
             foreach( $checkins['checkins']['items'] as $checkin ) {
                 $html .= '<hr class="faded">';
@@ -138,12 +151,18 @@ class Custom_Untappd_Feeds_Shortcodes {
             }
             
             $html .= '<hr class="faded">';
-            $html .= $this->cuf_footer( $user );
+            $html .= $this->shortcode_footer( $user );
         $html .= '</div>';
         
         return $html;
     }
     
+    /** user_badges()
+     * Shortcode view to show recent badges earned by the user.
+     *
+     * @since   2018.11
+     * @access  public
+     */
     public function user_badges() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
@@ -152,7 +171,7 @@ class Custom_Untappd_Feeds_Shortcodes {
         $badges = $badges['response'];
         
         $html .= '<div class="cuf-shortcode-container">';
-            $html .= $this->cuf_header( $user );
+            $html .= $this->shortcode_header( $user );
             $html .= '<hr class="faded">';
             $html .= '<div class="pure-g text-center">';
                 $html .= '<div class="pure-u-1 cuf-badges">';
@@ -162,19 +181,25 @@ class Custom_Untappd_Feeds_Shortcodes {
                 $html .= '</div>';
             $html .= '</div>';
             $html .= '<hr class="faded">';
-            $html .= $this->cuf_footer( $user );
+            $html .= $this->shortcode_footer( $user );
         $html .= '</div>';
             
         return $html;
     }
     
+    /** user_info()
+     * Shortcode view to show the users basic profile stats
+     *
+     * @since   2018.11
+     * @access  public
+     */
     public function user_info() {
         $html = '';
         $user = json_decode( $this->api->get_body( '/user/info/' . $this->atts['user'], array( 'compact' => 'true') ), true );
         $user = $user['response'];
         
         $html .= '<div class="cuf-shortcode-container">';
-            $html .= $this->cuf_header( $user );
+            $html .= $this->shortcode_header( $user );
             $html .= '<hr class="faded">';
             $html .= '<div class="pure-g cuf-user-stats text-center">';
                 $html .= '<div class="pure-u-1-4"><label>Total</label><span class="stat">' . number_format( $user['user']['stats']['total_checkins'], 0, '', ',' ) . '</span></div>';
@@ -183,13 +208,19 @@ class Custom_Untappd_Feeds_Shortcodes {
                 $html .= '<div class="pure-u-1-4"><label>Friends</label><span class="stat">' . number_format( $user['user']['stats']['total_friends'], 0, '', ',' ) . '</span></div>';
             $html .= '</div>';
             $html .= '<hr class="faded">';
-            $html .= $this->cuf_footer( $user );
+            $html .= $this->shortcode_footer( $user );
         $html .= '</div>';
             
         return $html;
     }
     
-    private function cuf_header( $user ) {
+    /** shortcode_header()
+     * Shortcode partial to generate a standard header
+     *
+     * @since   2018.11
+     * @access  protected
+     */
+    protected function shortcode_header( $user ) {
         $html .= '<div class="pure-g cuf-user-header">';
             $html .= '<div class="pure-u-5-24 cuf-user-avatar-container">';
                 $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
@@ -207,7 +238,13 @@ class Custom_Untappd_Feeds_Shortcodes {
         return $html;
     }
     
-    protected function cuf_footer( $user ) {
+    /** shortcode_footer()
+     * Shortcode partial to generate a standard footer
+     *
+     * @since   2018.11
+     * @access  protected
+     */
+    protected function shortcode_footer( $user ) {
         $html = '<div class="cuf-footer text-center">';
         
             $html .= '<a href="' . $user['user']['untappd_url'] . '" target="_blank" title="Untappd.com"><i class="fab fa-untappd fa-lg"></i></a>';
