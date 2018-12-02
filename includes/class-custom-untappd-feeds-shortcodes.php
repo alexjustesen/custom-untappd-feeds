@@ -354,9 +354,6 @@ class Custom_Untappd_Feeds_Shortcodes {
         
         // Return $html
         return $html;
-        
-        // Return $html
-        return $html;
     }
     
     /** shortcode_header()
@@ -366,7 +363,7 @@ class Custom_Untappd_Feeds_Shortcodes {
      * @access  protected
      */
     protected function shortcode_header( $user ) {
-        $html .= '<div class="pure-g cuf-user-header">';
+        $html = '<div class="pure-g cuf-user-header">';
             $html .= '<div class="pure-u-5-24 cuf-user-avatar-container">';
                 $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
                 if ( $user['user']['is_supporter'] ) {
