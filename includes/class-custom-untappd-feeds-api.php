@@ -44,7 +44,7 @@ class Custom_Untappd_Feeds_API {
         $this->api_endpoint = 'https://api.untappd.com/v4';
         
         // Set transient namespace
-        $this->$transient_prefix = 'cuf_response_';
+        $this->transient_prefix = 'cuf_response_';
         
         // Get Custom Untappd Feed API option data
         $option = get_option( 'cuf_api_settings' );
@@ -105,7 +105,7 @@ class Custom_Untappd_Feeds_API {
     private function transient_name( $url ) {
         
         // Build a unique transient name
-        $hash = $this->$transient_prefix . md5( $url );
+        $hash = $this->transient_prefix . md5( $url );
                 
         // Return name
         return $hash;
