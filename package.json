@@ -1,0 +1,22 @@
+{
+  "name": "custom-untappd-feeds",
+  "version": "1.0.0",
+  "description": "Packages for the plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexjustesen/custom-untappd-feeds.git"
+  },
+  "author": "Alex Justesen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexjustesen/custom-untappd-feeds/issues"
+  },
+  "homepage": "https://github.com/alexjustesen/custom-untappd-feeds#readme",
+  "dependencies": {
+    "flexboxgrid": "^6.3.1"
+  }
+}
