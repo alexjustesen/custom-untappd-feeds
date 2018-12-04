@@ -1,5 +1,5 @@
 # Custom Untappd Feeds
-Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd data on your WordPress site. [Donate :beers: or :coffee:](https://ko-fi.com/alexjustesen) to support the plugin.
+Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd data on your WordPress site. Includes views for your profile summary (check-in count, unique count, badge count and friend count), recent check-ins and recently earned badges. [Donate :beers: or :coffee:](https://ko-fi.com/alexjustesen) to support the plugin.
 
 ### Installation
 
@@ -10,6 +10,11 @@ Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd da
 5. Use the documentation page to configure the shortcodes.
 
 ### Change Log
+
+#### v2018.12 - December 4th, 2018
+* New user overview shortcode to combine the profile summary, recently earned badges and recent check-ins.
+* Improved caching and added cache timeout.
+* UI improvements to the widget header and recent check-ins.
 
 #### v2018.12-beta2 - December 2nd, 2018
 * Fixed incorrect transient prefix reference
