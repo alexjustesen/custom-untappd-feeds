@@ -16,7 +16,5 @@
     "url": "https://github.com/alexjustesen/custom-untappd-feeds/issues"
   },
   "homepage": "https://github.com/alexjustesen/custom-untappd-feeds#readme",
-  "dependencies": {
-    "flexboxgrid": "^6.3.1"
-  }
+  "dependencies": {}
 }
