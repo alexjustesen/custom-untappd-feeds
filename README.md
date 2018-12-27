@@ -9,7 +9,21 @@ Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd da
 4. Follow the directions on the settings page to apply for an Untappd API app.
 5. Use the documentation page to configure the shortcodes.
 
+### Developer
+
+#### Additional Requirements
+* Node Package Manager (NPM)
+
+#### Installation
+1. Clone repo to `wp-content/plugins`.
+2. Run `npm install` from the `custom-untappd-feeds` directory to install plugin dependencies.
+3. Activate the plugin.
+
 ### Change Log
+
+#### v2019.01-alpha - January x, 2019
+* Can now delete single or all cached items
+* Upgraded Font Awesome to v5.6.3
 
 #### v2018.12 - December 4th, 2018
 * New user overview shortcode to combine the profile summary, recently earned badges and recent check-ins.

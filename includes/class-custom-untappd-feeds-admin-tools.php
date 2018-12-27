@@ -49,25 +49,61 @@ class Custom_Untappd_Feeds_Admin_Tools {
     }
     
     /**
-     * Displays all cached api calls.
+     * Returns an array of cached API calls
      *
-     * @since   2018.11
+     * @since 2019.01
      */
-    public function view_cache() {
-        $this->html = '';
+    public function get_cache() {
         
+        $results = array();
+        
+        // Init WordPress global database
         global $wpdb;
-        $sql = "SELECT `option_name` as `name`, `option_value` as `value` 
-            FROM $wpdb->options 
-            WHERE `option_name` LIKE '%_cuf_response_%'";
+        
+        $sql = "SELECT * FROM $wpdb->options WHERE option_name LIKE '%\_transient\_cuf\_%' AND option_name NOT LIKE '%\_transient\_timeout%'";
         
         $results = $wpdb->get_results( $sql );
-                
-        $this->html = $results;
         
-        return $this->html;
+        return $results;
+        
     }
     
-    # TODO write process to clear cache
+    public function get_transient_name( $transient ) {
+		$length = false !== strpos( $transient->option_name, 'site_transient_' ) ? 16 : 11;
+		return substr( $transient->option_name, $length, strlen( $transient->option_name ) );
+	}
+    
+    private function get_transient_expiration_time( $transient ) {
+
+		if( false !== strpos( $transient->option_name, 'site_transient_' ) ) {
+
+			$time = get_option( '_site_transient_timeout_' . $this->get_transient_name( $transient ) );
+
+		} else {
+
+			$time = get_option( '_transient_timeout_' . $this->get_transient_name( $transient ) );
+
+		}
+
+		return $time;
+
+	}
+    
+	public function get_transient_expiration( $transient ) {
+
+		$time_now   = time();
+		$expiration = $this->get_transient_expiration_time( $transient );
+
+		if( empty( $expiration ) ) {
+			return __( 'Does not expire', 'custom-untappd-feeds' );
+		}
+
+		if( $time_now > $expiration ) {
+			return __( 'Expired', 'custom-untappd-feeds' );
+		}
+        
+		return human_time_diff( $time_now, $expiration );
+
+	}
     
 }

@@ -77,7 +77,7 @@ class Custom_Untappd_Feeds_API {
      * @return  $url        string
      * @author  alexjustesen
      */
-    private function api_url( $api_method, $api_params ) {
+    public function api_url( $api_method, $api_params ) {
         
         // Merge query args into single array
         $args = array_merge( array( 'client_id' => $this->client_id, 'client_secret' => $this->client_secret ), $api_params );
@@ -102,7 +102,7 @@ class Custom_Untappd_Feeds_API {
      * @return  $hash   string
      * @author  alexjustesen
      */
-    private function transient_name( $url ) {
+    public function transient_name( $url ) {
         
         // Build a unique transient name
         $hash = $this->transient_prefix . md5( $url );
@@ -112,26 +112,10 @@ class Custom_Untappd_Feeds_API {
     }
     
     /**
-     * Delete the transient cache record
+     * Set the transient cache record, Untappd requires the cache be cleared at least every 24h, default is 15 min
      *
      * @since   2018.11
-     */
-    public function del_cache( $url ) {
-        
-        // Get transient name from url string
-        $name = $this->transient_name( $url );
-        
-        // delete the cache
-        $transient = delete_transient( $name ); // https://codex.wordpress.org/Function_Reference/delete_transient
-        
-        // Return transient
-        return $transient;
-    }
-    
-    /**
-     * Set the transient cache record, Untappd requires the cache be cleared at least every 24h
-     *
-     * @since   2018.11
+     * @access  public
      */
     public function set_cache( $url, $value, $expiration=60*15 ) {
         
@@ -162,6 +146,7 @@ class Custom_Untappd_Feeds_API {
      * Get the transient cache record
      *
      * @since   2018.11
+     * @access  public
      */
     public function get_cache( $url ) {
         
@@ -176,10 +161,11 @@ class Custom_Untappd_Feeds_API {
     }
     
     /**
-     * Returns the http response from the api get call
+     * Returns the http response from the api call
      *
      * @since   2018.11
      * @access  public
+     * @returns string|false
      */
     public function get( $api_method, $api_params ) {
         
@@ -207,6 +193,31 @@ class Custom_Untappd_Feeds_API {
         return $response;
     }
     
+    /**
+     * Returns the header of the http response from the api call
+     *
+     * @since   2018.11
+     * @access  public
+     * @returns array|false
+     */
+    public function get_header( $api_method, $api_params ) {
+        // Get api response
+        $response = $this->get( $api_method, $api_params );
+        
+        // Get api response headers
+        $headers = wp_remote_retrieve_headers( $response );
+        
+        // Return headers
+        return $headers;
+    }
+    
+    /**
+     * Returns the body of the http response from the api call
+     *
+     * @since   2018.11
+     * @access  public
+     * @returns array|false
+     */
     public function get_body( $api_method, $api_params ) {
         
         $response = $this->get( $api_method, $api_params );
@@ -215,30 +226,48 @@ class Custom_Untappd_Feeds_API {
     }
     
     /**
-     * Returns the http response code only from the api get call
+     * Returns the meta data of the api call body
      *
-     * @since   2018.11
+     * @since   2019.01
      * @access  public
+     * @returns array|false
      */
-    public function get_code( $api_method, $api_params ) {
+    public function get_body_meta( $body = '' ) {
+                
+        $body = json_decode( $body, true );
+                
+        return $body['meta'];
         
-        $url = $this->api_url( $api_method, $api_params );
-        $http_code = wp_remote_retrieve_response_code(  wp_remote_get( $url ) );
-        
-        return $http_code;
     }
     
     /**
-     * Returns the http response headers only from the api get call
+     * Returns the notifications data of the api call body
      *
-     * @since   2018.11
+     * @since   2019.01
      * @access  public
+     * @returns array|false
      */
-    public function get_headers( $api_method, $api_params ) {
+    public function get_body_notifications( $body = '' ) {
         
-        $response = $this->get( $api_method, $api_params );
+        $body = json_decode( $body, true );
+                
+        return $body['notifications'];
         
-        return $response['headers'];
+    }
+    
+    /**
+     * Returns the response data of the api call body
+     *
+     * @since   2019.01
+     * @access  public
+     * @returns array|false
+     */
+    public function get_body_response( $body = '' ) {
+        
+        $body = json_decode( $body, true );
+                
+        return $body['response'];
+        
     }
     
 }

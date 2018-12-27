@@ -113,7 +113,7 @@ class Custom_Untappd_Feeds_Public {
 		 */
         
         wp_enqueue_style( 'roboto', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i', array(), '1.0.0', 'all' );
-        wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '5.5.0', 'all' );
+        wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css', array(), '5.6.3', 'all' );
         wp_enqueue_style( 'purecss', PLUGIN_URL . 'public/css/pure-release-1.0.0/pure-min.css', array(), '1.0.0', 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/custom-untappd-feeds-public.css', array(), $this->version, 'all' );
 

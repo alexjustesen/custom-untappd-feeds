@@ -367,7 +367,7 @@ class Custom_Untappd_Feeds_Shortcodes {
             $html .= '<div class="pure-u-5-24 cuf-user-avatar-container">';
                 $html .= '<img class="pure-img cuf-user-avatar" src="' . $user['user']['user_avatar'] . '">';
                 if ( $user['user']['is_supporter'] ) {
-                    $html .= '<span class="cuf-user-is-supporter" title="Untappd Supporter"><i class="fas fa-certificate fa-lg"></i></span>';
+                    $html .= '<span class="cuf-user-is-supporter" title="Untappd Supporter"><i class="fas fa-certificate"></i></span>';
                 }
             $html .= '</div>';
             $html .= '<div class="pure-u-19-24 cuf-user-info-container">';

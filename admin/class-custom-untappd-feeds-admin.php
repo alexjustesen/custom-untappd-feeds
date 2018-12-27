@@ -39,6 +39,15 @@ class Custom_Untappd_Feeds_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+    
+    /**
+     * Message for the admin area
+     *
+     * @since   2019.01
+     * @access  public
+     * @var     array       $message
+     */
+    public $message;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -53,13 +62,14 @@ class Custom_Untappd_Feeds_Admin {
 		$this->version = $version;
         
         add_action( 'admin_menu', array( $this, 'add_menu' ) );
+        add_action( 'admin_init', array( $this, 'process_actions' ) );
         add_action( 'admin_init', array( $this, 'settings_page_init' ) );
 
 	}
     
      public function add_menu() {
          add_menu_page(
-            'Untappd Feeds',
+            'Options',
             'Untappd Feeds',
             'manage_options',
             'custom-untappd-feeds',
@@ -104,6 +114,67 @@ class Custom_Untappd_Feeds_Admin {
         require_once plugin_dir_path( __FILE__ ) . 'partials/custom-untappd-feeds-admin-about.php';
         
     }
+    
+    public function process_actions() {
+        if ( empty( $_REQUEST['action'] ) ) {
+			return;
+		}
+        
+        if ( empty( $_REQUEST['transient'] ) && ( 'suspend_transients' !== $_REQUEST['action'] && 'unsuspend_transients' !== $_REQUEST['action'] ) ) {
+			return;
+		}
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'] , 'custom_untappd_feeds' ) ) {
+			return;
+		}
+        
+        $transient = $_REQUEST['transient'];
+        $site_wide = isset( $_REQUEST['name'] ) && false !== strpos( $_REQUEST['name'], '_site_transient' );
+        
+        switch ( $_REQUEST['action'] ) {
+            
+            case 'delete_transient' :
+				$this->delete_transient( $transient, $site_wide );
+				wp_safe_redirect( admin_url( 'admin.php?page=custom-untappd-feeds-about' ) ); exit;
+				break;
+                
+            case 'delete_all_transients' :
+				$this->delete_all_transients();
+				wp_safe_redirect( admin_url( 'admin.php?page=custom-untappd-feeds-about' ) ); exit;
+				break;
+        }
+    }
+    
+	private function delete_transient( $transient = '', $site_wide = false ) {
+
+		if ( empty( $transient ) ) {
+			return false;
+		}
+
+		if ( false !== $site_wide ) {
+
+			return delete_site_transient( $transient );
+
+		} else {
+
+			return delete_transient( $transient );
+
+		}
+
+	}
+
+	private function delete_all_transients() {
+
+		global $wpdb;
+
+		$count = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_cuf\_response\_%'" );
+
+		return $count;
+	}
     
     public function api_section_text()
     {
@@ -246,7 +317,7 @@ class Custom_Untappd_Feeds_Admin {
         return $links;
         
     }
-
+    
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
@@ -266,7 +337,7 @@ class Custom_Untappd_Feeds_Admin {
 		 * class.
 		 */
         
-        wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '5.5.0', 'all' );
+        wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css', array(), '5.6.3', 'all' );
         wp_enqueue_style( 'purecss', PLUGIN_URL . 'public/css/pure-release-1.0.0/pure-min.css', array(), '1.0.0', 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/custom-untappd-feeds-admin.css', array(), $this->version, 'all' );
 
