@@ -41,7 +41,7 @@ class Custom_Untappd_Feeds_API {
     public function __construct() {
         
         // Set API endpoint, current public api is version 4 - https required
-        $this->api_endpoint = 'https://api.untappd.com/v4/';
+        $this->api_endpoint = 'https://api.untappd.com/v4';
         
         // Set transient namespace
         $this->transient_prefix = 'cuf_response_';
