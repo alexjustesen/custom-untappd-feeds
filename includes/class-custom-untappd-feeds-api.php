@@ -41,7 +41,7 @@ class Custom_Untappd_Feeds_API {
     public function __construct() {
         
         // Set API endpoint, current public api is version 4 - https required
-        $this->api_endpoint = 'https://api.untappd.com/v4';
+        $this->api_endpoint = 'https://api.untappd.com/v4/';
         
         // Set transient namespace
         $this->transient_prefix = 'cuf_response_';
@@ -77,7 +77,7 @@ class Custom_Untappd_Feeds_API {
      * @return  $url        string
      * @author  alexjustesen
      */
-    private function api_url( $api_method, $api_params ) {
+    public function api_url( $api_method, $api_params ) {
         
         // Merge query args into single array
         $args = array_merge( array( 'client_id' => $this->client_id, 'client_secret' => $this->client_secret ), $api_params );
@@ -102,7 +102,7 @@ class Custom_Untappd_Feeds_API {
      * @return  $hash   string
      * @author  alexjustesen
      */
-    private function transient_name( $url ) {
+    public function transient_name( $url ) {
         
         // Build a unique transient name
         $hash = $this->transient_prefix . md5( $url );
