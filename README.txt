@@ -1,7 +1,7 @@
 === Custom Untappd Feeds ===
 Donate link: https://ko-fi.com/alexjustesen
 Requires at least: 4.4
-Tested up to: 4.9.8
+Tested up to: 5.0.2
 Requires PHP: 5.6
 Stable tag: master
 License: MIT
