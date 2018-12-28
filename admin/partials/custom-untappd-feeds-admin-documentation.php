@@ -24,7 +24,7 @@
     <p>This plugin uses shortcodes so you can place the views in posts, pages or widgets. The base shortcode is <code>[custom-untappd-feeds]</code> and attributes are added to the shortcode for different views and view settings. See the documentation below for view and attribute examples.</p>
         
     <h4>Views and Attributes</h4>
-    <table class="pure-table pure-table-bordered">
+    <table class="wp-list-table widefat fixed posts">
         
         <thead>
             <tr>
@@ -46,7 +46,7 @@
                     <p>Shows a list of recent checkins for the specified username.</p>
                 </td>
                 <td>
-                    <ul class="fa-ul">
+                    <ul class="fa-ul" style="margin-top: 0px;">
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span><strong><code>user='USERNAME'</code> - the username to get the user information for.</strong></li>
                         <li><span class="fa-li"><i class="far fa-square"></i></span><code>limit='#'</code> - returns the number of check-ins set. Default = 5 Max = 50</li>
                     </ul>
@@ -65,7 +65,7 @@
                     <p>Shows a list of badges for the specified username.</p>
                 </td>
                 <td>
-                    <ul class="fa-ul">
+                    <ul class="fa-ul" style="margin-top: 0px;">
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span><strong><code>user='USERNAME'</code> - the username to get the user information for.</strong></li>
                         <li><span class="fa-li"><i class="far fa-square"></i></span><code>limit='#'</code> - returns the number of badges set, Default = 12 Max = 50</li>
                     </ul>
@@ -84,7 +84,7 @@
                     <p>Shows the specified username's profile information.</p>
                 </td>
                 <td>
-                    <ul class="fa-ul">
+                    <ul class="fa-ul" style="margin-top: 0px;">
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span><strong><code>user='USERNAME'</code> - the username to get the user information for.</strong></li>
                     </ul>
                 </td>
@@ -102,7 +102,7 @@
                     <p>Combines the user info, badges and activity into one shortcode.</p>
                 </td>
                 <td>
-                    <ul class="fa-ul">
+                    <ul class="fa-ul" style="margin-top: 0px;">
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span><strong><code>user='USERNAME'</code> - the username to get the user information for.</strong></li>
                         <li><span class="fa-li"><i class="far fa-square"></i></span><code>activity-limit='#'</code> - returns the number of check-ins set. Default = 5 Max = 50</li>
                         <li><span class="fa-li"><i class="far fa-square"></i></span><code>badge-limit='#'</code> - returns the number of badges set, Default = 12 Max = 50</li>

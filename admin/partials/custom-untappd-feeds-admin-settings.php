@@ -19,9 +19,9 @@
         <?php settings_fields('cuf_api_settings'); // matches the options name ?>
         <?php do_settings_sections('cuf_api_settings'); // matches the section name ?>
         
-        <p class="submit">
-            <button type="submit" name="submit" id="submit" class="button-primary"><?php _e( 'Save Settings', 'custom-untappd-feeds' ); ?></button>
-        </p>
+        <div style="margin-top: 15px;">
+            <button type="submit" name="submit" id="submit" class="button-secondary"><i class="far fa-save"></i> <?php _e( 'Save Settings', 'custom-untappd-feeds' ); ?></button>
+        </div>
         
     </form>
     

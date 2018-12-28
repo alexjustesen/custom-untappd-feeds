@@ -44,11 +44,13 @@ $cache_results = $tools->get_cache();
     
     <?php if ( $cache_results ) : ?>
     
+        <p>Clear your cache if you have bad API responses or have changed your cache expiration time. WordPress will delete any expired cached items automatically.</p>
+    
         <table class="wp-list-table widefat fixed posts">
             <thead>
                 <tr>
                     <th style="width: 40px"><?php _e( 'ID', 'custom-untappd-feeds' ); ?></th>
-                    <th><?php _e( 'Cache Name', 'custom-untappd-feeds' ); ?></th>
+                    <th><?php _e( 'Cache Hash', 'custom-untappd-feeds' ); ?></th>
                     <th><?php _e( 'Cache Code', 'custom-untappd-feeds' ); ?></th>
                     <th><?php _e( 'Cache Expires', 'custom-untappd-feeds' ); ?></th>
                     <th><?php _e( 'Actions', 'custom-untappd-feeds' ); ?></th>
@@ -69,7 +71,13 @@ $cache_results = $tools->get_cache();
                     <tr>
                         <td><?php echo $row->option_id; ?></td>
                         <td><?php echo $transient_name; ?></td>
-                        <td><?php echo $body['meta']['code']; ?></td>
+                        <td>
+                            <?php if ( $body['meta']['code'] == 200 ) : ?>
+                                <i class="far fa-check-circle text-success" title="response code: <?php echo $body['meta']['code']; ?>"></i> good API response
+                            <?php else : ?>
+                                <i class="far fa-times-circle text-error" title="response code: <?php echo $body['meta']['code']; ?>"></i> bad API response
+                            <?php endif; ?>
+                        </td>
                         <td><?php echo $tools->get_transient_expiration( $row ); ?></td>
                         <td>
                             <a href="<?php echo esc_url( $delete_url ); ?>" class="delete" style="color:#a00;"><?php _e( 'Delete', 'custom-untappd-feeds' ); ?></a>
@@ -80,7 +88,7 @@ $cache_results = $tools->get_cache();
             </tbody>
         </table>
         
-        <div style="margin-top: 5px;">
+        <div style="margin-top: 15px;">
             <form method="post">
                 <input type="hidden" name="action" value="delete_all_transients" />
                 <input type="hidden" name="transient" value="all" />

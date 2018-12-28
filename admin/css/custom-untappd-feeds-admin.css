@@ -3,6 +3,14 @@
  * included in this file.
  */
 
+.text-error {
+    color: rgb(202, 60, 60);
+}
+
+.text-success {
+    color: rgb(28, 184, 65);
+}
+
 #toplevel_page_custom-untappd-feeds .dashicons-admin-generic:before {
     font-family: "Font Awesome 5 Brands";
     font-size: 1rem;
