@@ -61,57 +61,25 @@ class Custom_Untappd_Feeds_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
         
-        add_action( 'admin_menu', array( $this, 'add_menu' ) );
+        add_action( 'admin_menu', array( $this, 'admin_menu' ) );
         add_action( 'admin_init', array( $this, 'process_actions' ) );
         add_action( 'admin_init', array( $this, 'settings_page_init' ) );
 
 	}
     
-     public function add_menu() {
-         add_menu_page(
+    public function admin_menu() {
+        add_options_page(
             'Options',
-            'Untappd Feeds',
+            'Custom Untappd Feeds',
             'manage_options',
             'custom-untappd-feeds',
-            array( $this, 'create_options_page' ),
-            '',
-            99
-        );
-
-        add_submenu_page(
-            'custom-untappd-feeds',
-            'Documentation',
-            'Documentation',
-            'manage_options',
-            'custom-untappd-feeds-documentation',
-            array( $this, 'create_documentation_page' )
-        );
-         
-        add_submenu_page(
-            'custom-untappd-feeds',
-            'About',
-            'About',
-            'manage_options',
-            'custom-untappd-feeds-about',
-            array( $this, 'create_about_page' )
+            array( $this, 'admin_view' )
         );
     }
     
-    public function create_options_page() {
+    public function admin_view() {
         
-        require_once plugin_dir_path( __FILE__ ) . 'partials/custom-untappd-feeds-admin-settings.php';
-        
-    }
-    
-    public function create_documentation_page() {
-        
-        require_once plugin_dir_path( __FILE__ ) . 'partials/custom-untappd-feeds-admin-documentation.php';
-        
-    }
-    
-    public function create_about_page() {
-        
-        require_once plugin_dir_path( __FILE__ ) . 'partials/custom-untappd-feeds-admin-about.php';
+        require_once plugin_dir_path( __FILE__ ) . 'partials/custom-untappd-feeds-admin-view.php';
         
     }
     
@@ -139,13 +107,14 @@ class Custom_Untappd_Feeds_Admin {
             
             case 'delete_transient' :
 				$this->delete_transient( $transient, $site_wide );
-				wp_safe_redirect( admin_url( 'admin.php?page=custom-untappd-feeds-about' ) ); exit;
+				wp_safe_redirect( admin_url( 'options-general.php?page=custom-untappd-feeds&tab=cache&cache-removed=sucess' ) ); exit;
 				break;
                 
             case 'delete_all_transients' :
 				$this->delete_all_transients();
-				wp_safe_redirect( admin_url( 'admin.php?page=custom-untappd-feeds-about' ) ); exit;
+				wp_safe_redirect( admin_url( 'options-general.php?page=custom-untappd-feeds&tab=cache&cache-cleared=sucess' ) ); exit;
 				break;
+            
         }
     }
     

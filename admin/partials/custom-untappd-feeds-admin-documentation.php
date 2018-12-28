@@ -13,14 +13,17 @@
  */
 ?>
 
-<div class="wrap">
+<div class="tab-wrapper">
+              
+    <h4>About the Plugin</h4>
     
-    <h1><i class="fab fa-untappd fa-fw"></i> Custom Untappd Feeds <small>- Documentation</small></h1>
-           
-    <h2>How to Use</h2>
-    <p>This plugin uses shortcodes, the base shortcode is <code>[custom-untappd-feeds]</code> and attributes are added to the shortcode for different views and settings. See the documenation below for configuration examples.</p>
+    <p>With <strong>Custom Untappd Feeds</strong> you can display your <a href="https://www.untappd.com" rel="nofollow" target="_blank">Untappd</a> user information, user activity feed and badges earned. This is an unofficial Untappd WordPress plugin and released under the GNU GENERAL PUBLIC LICENSE with NO WARRANTEE.</p>
+               
+    <h4>How to Use</h4>
+    
+    <p>This plugin uses shortcodes so you can place the views in posts, pages or widgets. The base shortcode is <code>[custom-untappd-feeds]</code> and attributes are added to the shortcode for different views and view settings. See the documentation below for view and attribute examples.</p>
         
-    <h2>Views and Attributes</h2>
+    <h4>Views and Attributes</h4>
     <table class="pure-table pure-table-bordered">
         
         <thead>
@@ -29,6 +32,7 @@
                 <th>Description</th>
                 <th>Attributes</th>
                 <th>Example</th>
+                <th>As Of</th>
             </tr>
         </thead>
         
@@ -50,6 +54,7 @@
                 <td>
                     <code>[custom-untappd-feeds view='user-activity' user='USERNAME' limit='5']</code>
                 </td>
+                <td>v2018.11</td>
             </tr>
             
             <tr>
@@ -68,6 +73,7 @@
                 <td>
                     <code>[custom-untappd-feeds view='user-badges' user='USERNAME' limit='12']</code>
                 </td>
+                <td>v2018.11</td>
             </tr>
             
             <tr>
@@ -85,6 +91,7 @@
                 <td>
                     <code>[custom-untappd-feeds view='user-info' user='USERNAME']</code>
                 </td>
+                <td>v2018.11</td>
             </tr>
             
             <tr>
@@ -104,6 +111,7 @@
                 <td>
                     <code>[custom-untappd-feeds view='user-overview' user='USERNAME' activity-limit='5' badge-limit='12']</code>
                 </td>
+                <td>v2018.12</td>
             </tr>
             
         </tbody>
@@ -115,9 +123,10 @@
         <li><span class="fa-li"><i class="far fa-square"></i></span>Optional attribute</li>
     </ul>
     
-    <h2>API Caching</h2>
-    <p>Untappd limits the amount of API requests to a maximum of 100 per rolling hour. To help avoid hitting this limit and to improve plugin performance we cache all API call results for 15 minutes.</p>
+    <h4>API Caching</h4>
+    <p>Untappd limits the amount of API requests to a maximum of 100 per rolling hour. To help avoid hitting this limit and to improve plugin performance we cache all API call results for a default of 15 minutes. You can change the amount of time data is cached for on the settings page. You can read more about Untappd's API in their <a href="https://untappd.com/api/docs" target="_blank">docs</a> and view and clear the cache on the <a href="?page=custom-untappd-feeds&tab=cache">cache</a> tab.</p>
     
-    <p><a href="https://untappd.com/api/docs" target="_blank">Untappd API Documentation</a> </p>
+    <h4>Change Log, Bugs and Feature Requests</h4>
+    <p>Visit the Github repo for the latest builds, report bugs and request new features. <a href="https://github.com/alexjustesen/custom-untappd-feeds" rel="nofollow" target="_blank">Github</a></p>
     
 </div>

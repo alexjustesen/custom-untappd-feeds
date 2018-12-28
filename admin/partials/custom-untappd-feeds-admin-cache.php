@@ -22,16 +22,25 @@ $cache_results = $tools->get_cache();
 
 ?>
 
-<div class="wrap">
+<div class="tab-wrapper">
     
-    <h1><i class="fab fa-untappd fa-fw"></i> Custom Untappd Feeds <small>- About This Plugin</small></h1>
+    <h4>Cached API Calls</h4>
     
-    <h2>About</h2>
-    <p>This is an unofficial Untappd WordPress plugin and released under the GNU GENERAL PUBLIC LICENSE with NO WARRANTEE.</p>
+    <?php if ( isset( $_REQUEST[ 'cache-cleared' ] ) == 'success' ) : ?>
     
-    <p>With <strong>Custom Untappd Feeds</strong> you can display your <a href="https://www.untappd.com" rel="nofollow" target="_blank">Untappd</a> user information, user activity feed and badges earned. To use this plugin check out the <a href="admin.php?page=custom-untappd-feeds-documentation" target="_self">documentation</a> for how to configure the sortcodes.</p>
+        <div class="notice notice-success is-dismissible">
+            <h4><?php _e( "The cache was successfully cleared.", 'custom-untappd-feeds' ); ?></h4>
+        </div>
     
-    <h2>Cached API Calls</h2>
+    <?php endif; ?>
+    
+    <?php if ( isset( $_REQUEST[ 'cache-removed' ] ) == 'success' ) : ?>
+    
+        <div class="notice notice-success is-dismissible">
+            <h4><?php _e( "The cache item was successfully removed.", 'custom-untappd-feeds' ); ?></h4>
+        </div>
+    
+    <?php endif; ?>
     
     <?php if ( $cache_results ) : ?>
     
@@ -63,7 +72,7 @@ $cache_results = $tools->get_cache();
                         <td><?php echo $body['meta']['code']; ?></td>
                         <td><?php echo $tools->get_transient_expiration( $row ); ?></td>
                         <td>
-                            <a href="<?php echo esc_url( $delete_url ); ?>" class="delete" style="color:#a00;"><?php _e( 'Delete', 'pw-transients-manager' ); ?></a>
+                            <a href="<?php echo esc_url( $delete_url ); ?>" class="delete" style="color:#a00;"><?php _e( 'Delete', 'custom-untappd-feeds' ); ?></a>
                         </td>
                     </tr>
                 
@@ -76,7 +85,7 @@ $cache_results = $tools->get_cache();
                 <input type="hidden" name="action" value="delete_all_transients" />
                 <input type="hidden" name="transient" value="all" />
                 <?php wp_nonce_field( 'custom_untappd_feeds' ); ?>
-                <input type="submit" class="button danger" value="<?php _e( 'Delete All', 'custom-untappd-feeds' ); ?>" />
+                <button type="submit" class="button button-secondary button-large delete"><i class="far fa-trash-alt"></i> <?php _e( 'Delete All', 'custom-untappd-feeds' ); ?></button>
             </form>
         </div>
         
@@ -85,8 +94,5 @@ $cache_results = $tools->get_cache();
         <p>No cached API calls.</p>
        
     <?php endif; ?>
-        
-    <h2>Change log, bugs and feature requests</h2>
-    <p>Visit the Github repo for the latest builds, change logs, request features and report bugs. <a href="https://github.com/alexjustesen/custom-untappd-feeds" rel="nofollow" target="_blank">Github</a></p>
     
 </div>

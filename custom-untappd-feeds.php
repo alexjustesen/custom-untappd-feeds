@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 /** Define plugin constants
  * Versioning by Calendar standard (https://calver.org/) year.month.patch
  */
-define( 'PLUGIN_NAME_VERSION', '2019.01-alpha' );
+define( 'PLUGIN_VERSION', '2019.01-alpha' );
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

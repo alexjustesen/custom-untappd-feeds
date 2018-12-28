@@ -93,6 +93,12 @@ class Custom_Untappd_Feeds_Shortcodes {
                     $this->html = $this->user_info();
                     break;
                     
+                case 'bad-call':
+                    
+                    // Get shortcode html
+                    $this->html = $this->bad_call();
+                    break;
+                    
                 case 'user-overview':
                     
                     // Set activity limit if not set
@@ -353,6 +359,14 @@ class Custom_Untappd_Feeds_Shortcodes {
         $html .= '</div>';
         
         // Return $html
+        return $html;
+    }
+    
+    public function bad_call() {
+        $user = json_decode( $this->api->get_body( '/user/bad_call/' . $this->atts['user'], array( 'compact' => 'true') ), true );
+        
+        $html = 'Bad api call on purpose.';
+        
         return $html;
     }
     

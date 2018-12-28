@@ -13,18 +13,14 @@
  */
 ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-
-<div class="wrap">
-   
-    <h1><i class="fab fa-untappd fa-fw"></i> Custom Untappd Feeds <small>- Settings</small></h1>
+<div class="tab-wrapper">
     
     <form method="post" action="options.php">
         <?php settings_fields('cuf_api_settings'); // matches the options name ?>
         <?php do_settings_sections('cuf_api_settings'); // matches the section name ?>
         
         <p class="submit">
-            <input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes">
+            <button type="submit" name="submit" id="submit" class="button-primary"><?php _e( 'Save Settings', 'custom-untappd-feeds' ); ?></button>
         </p>
         
     </form>
