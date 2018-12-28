@@ -22,6 +22,8 @@ Custom Untappd Feeds is a WordPress plugin that lets you display your Untappd da
 ### Change Log
 
 #### v2019.01-alpha - January x, 2019
+* Removed admin page reliance on PureCSS
+* Overhauled admin pages and moved under single settings menu item
 * Can now delete single or all cached items
 * Upgraded Font Awesome to v5.6.3
 
