@@ -64,6 +64,11 @@ register_deactivation_hook( __FILE__, 'deactivate_custom_untappd_feeds' );
 require plugin_dir_path( __FILE__ ) . 'includes/class-custom-untappd-feeds.php';
 
 /**
+ * GitHub plugin update checker script.
+ */
+require plugin_dir_path( __FILE__ ) .  'plugin-update-checker/plugin-update-checker.php';
+
+/**
  * Begins execution of the plugin.
  *
  * Since everything within the plugin is registered via hooks,
@@ -74,6 +79,16 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-custom-untappd-feeds.php';
  */
 function run_custom_untappd_feeds() {
 
+    // GitHub repo location for plugin update checker
+    $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+        'https://github.com/alexjustesen/custom-untappd-feeds/',
+        __FILE__,
+        'custom-untappd-feeds'
+    );
+    
+    // Enable GitHub releases
+    $myUpdateChecker->getVcsApi()->enableReleaseAssets();
+    
 	$plugin = new Custom_Untappd_Feeds();
 	$plugin->run();
 
