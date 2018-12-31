@@ -24,17 +24,6 @@ if ( isset( $_GET[ 'tab' ] ) ) {
     
     <span class="small alignright">Version: <?php echo PLUGIN_VERSION; ?></span>
     <h2>Custom Untappd Feeds </h2>
-    
-    <?php //if ( $_REQUEST[ 'save-settings' ] == 'success' ) : ?>
-    
-        <div class="notice notice-info">
-            <h4><?php _e( "Custom Untappd Feeds Update Available" ); ?></h4>
-            <p>
-                <?php _e( 'A new version of Custom Untappd Feeds is available.', 'custom-untappd-feeds' ); ?> <a href="#" title="Download from GitHub">Update</a>
-            </p>
-        </div>
-    
-    <?php //endif; ?>
         
     <div class="nav-tab-wrapper">
         <a href="?page=custom-untappd-feeds&tab=settings" class="nav-tab <?php echo $active_tab == 'settings' ? 'nav-tab-active' : ''; ?>">Settings</a>
