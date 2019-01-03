@@ -27,12 +27,18 @@ if ( isset( $_GET[ 'tab' ] ) ) {
         
     <div class="nav-tab-wrapper">
         <a href="?page=custom-untappd-feeds&tab=settings" class="nav-tab <?php echo $active_tab == 'settings' ? 'nav-tab-active' : ''; ?>">Settings</a>
+        <a href="?page=custom-untappd-feeds&tab=brewery" class="nav-tab <?php echo $active_tab == 'brewery' ? 'nav-tab-active' : ''; ?>">Brewery Options</a>
         <a href="?page=custom-untappd-feeds&tab=cache" class="nav-tab <?php echo $active_tab == 'cache' ? 'nav-tab-active' : ''; ?>">Cache</a>
         <a href="?page=custom-untappd-feeds&tab=documentation" class="nav-tab <?php echo $active_tab == 'documentation' ? 'nav-tab-active' : ''; ?>">Documentation</a>
     </div>
     
     <?php
         switch ( $active_tab ) {
+            case 'brewery':
+                // require tab partial
+                require_once plugin_dir_path( __FILE__ ) . 'custom-untappd-feeds-admin-brewery.php';
+                break;
+                
             case 'cache':
                 // require tab partial
                 require_once plugin_dir_path( __FILE__ ) . 'custom-untappd-feeds-admin-cache.php';
