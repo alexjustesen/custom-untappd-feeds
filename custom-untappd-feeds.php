@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 /** Define plugin constants
  * Versioning by Calendar standard (https://calver.org/) year.month.patch
  */
-define( 'PLUGIN_VERSION', '2019.01-alpha' );
+define( 'PLUGIN_VERSION', '2020.03.develop' );
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -85,10 +85,10 @@ function run_custom_untappd_feeds() {
         __FILE__,
         'custom-untappd-feeds'
     );
-    
+
     // Enable GitHub releases
     $myUpdateChecker->getVcsApi()->enableReleaseAssets();
-    
+
 	$plugin = new Custom_Untappd_Feeds();
 	$plugin->run();
 
